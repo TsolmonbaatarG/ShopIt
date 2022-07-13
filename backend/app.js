@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+const colors = require("colors");
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
