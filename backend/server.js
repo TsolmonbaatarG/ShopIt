@@ -7,7 +7,7 @@ const cloudinary = require('cloudinary')
 // Handle Uncaught exceptions
 process.on('uncaughtException', err => {
     console.log(`ERROR: ${err.stack}`);
-    console.log('Shutting down due to uncaught exception');
+    console.log('Сервер унтарсан байна...'.red.inverse);
     process.exit(1)
 })
 
@@ -34,7 +34,7 @@ const server = app.listen(process.env.PORT, () => {
 // Handle Unhandled Promise rejections
 process.on('unhandledRejection', err => {
     console.log(`ERROR: ${err.stack}`);
-    console.log('Shutting down the server due to Unhandled Promise rejection');
+    console.log('Холбоолтын алдаа гарч сервер унтарсан байна...'.red.inverse);
     server.close(() => {
         process.exit(1)
     })
