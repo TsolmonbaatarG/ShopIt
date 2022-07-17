@@ -1,3 +1,4 @@
+const colors = require("colors");
 const Product = require('../models/product');
 const dotenv = require('dotenv');
 const connectDatabase = require('../config/database');
@@ -13,11 +14,10 @@ const seedProducts = async () => {
     try {
 
         await Product.deleteMany();
-        console.log('Products are deleted');
+        console.log("Өгөгдлийг бүгдийг устгалаа....".red.inverse);
 
         await Product.insertMany(products)
-        console.log('All Products are added.')
-
+        console.log("Өгөгдлийг импортлолоо....".green.inverse);
         process.exit();
 
     } catch (error) {
