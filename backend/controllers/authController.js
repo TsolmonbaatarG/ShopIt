@@ -39,21 +39,21 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
     // Checks if email and password is entered by user
     if (!email || !password) {
-        return next(new ErrorHandler('Please enter email & password', 400))
+        return next(new ErrorHandler('Хэрэглэгчийн имэйл болон нууц үгээ оруулна уу', 400))
     }
 
     // Finding user in database
     const user = await User.findOne({ email }).select('+password')
 
     if (!user) {
-        return next(new ErrorHandler('Invalid Email or Password', 401));
+        return next(new ErrorHandler('Хэрэглэгчийн имэйл болон нууц үгээ зөв оруулна уу', 401));
     }
 
     // Checks if password is correct or not
     const isPasswordMatched = await user.comparePassword(password);
 
     if (!isPasswordMatched) {
-        return next(new ErrorHandler('Invalid Email or Password', 401));
+        return next(new ErrorHandler('Хэрэглэгчийн имэйл болон нууц үгээ зөв оруулна уу', 401));
     }
 
     sendToken(user, 200, res)
